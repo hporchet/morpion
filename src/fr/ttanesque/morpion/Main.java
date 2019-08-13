@@ -3,6 +3,7 @@ package fr.ttanesque.morpion;
 
 
 import fr.ttanesque.morpion.core.jeu;
+import fr.ttanesque.morpion.players.ai;
 import fr.ttanesque.morpion.players.player;
 
 public class Main {
@@ -19,10 +20,13 @@ public class Main {
         do {
             show(gameMatrice);
             player.playerTurn(gameMatrice);
+            show(gameMatrice);
 
             int result = jeu.checkEnd(gameMatrice);
             if (result != 0) {
                 end(result);
+            } else {
+                ai.aiTurn(gameMatrice);
             }
 
 

@@ -85,11 +85,11 @@ public class jeu {
             }
         }
         checkDiag = 0;
-        for (int i=gameMatrice.length; i > 0; i--) {
+        for (int i=gameMatrice.length -1; i >= 0; i--) {
             if (lastChar2 != 'X' && lastChar2 != 'O') {
-                lastChar2 = gameMatrice[i][3 - i];
+                lastChar2 = gameMatrice[i][2 - i];
                 checkDiag = 1;
-            } else if (lastChar2 == gameMatrice[i][3 - i]) checkDiag++;
+            } else if (lastChar2 == gameMatrice[i][2 - i]) checkDiag++;
         }
 
         if (checkDiag == gameMatrice.length) {
