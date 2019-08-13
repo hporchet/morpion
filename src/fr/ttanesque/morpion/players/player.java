@@ -1,7 +1,6 @@
 package fr.ttanesque.morpion.players;
 
 import fr.ttanesque.morpion.core.jeu;
-import sun.rmi.server.Activation$ActivationSystemImpl_Stub;
 
 import java.util.Scanner;
 
