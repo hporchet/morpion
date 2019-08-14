@@ -2,7 +2,7 @@ package fr.ttanesque.morpion;
 
 
 
-import fr.ttanesque.morpion.core.jeu;
+import fr.ttanesque.morpion.core.game;
 import fr.ttanesque.morpion.players.ai;
 import fr.ttanesque.morpion.players.player;
 
@@ -13,6 +13,8 @@ public class Main {
     public static void main(String[] args) {
         //create the game support
         char[][] gameMatrice = new char[MATRICE_SIZE][MATRICE_SIZE];
+
+        //fill it with ' '
         for (int i=0; i < MATRICE_SIZE; i++) {
             for (int j=0; j <MATRICE_SIZE; j++) {
                 gameMatrice[i][j] = ' ';
@@ -24,15 +26,15 @@ public class Main {
             player.playerTurn(gameMatrice);
             show(gameMatrice);
 
-            int result = jeu.checkEnd(gameMatrice);
-            if (result != 0) {
+            int result = game.checkEnd(gameMatrice);
+            if (result != 0) { //game is end
                 end(result);
             } else {
                 ai.aiTurn(gameMatrice);
             }
 
 
-        } while (jeu.checkEnd(gameMatrice) == 0);
+        } while (game.checkEnd(gameMatrice) == 0);
     }
 
     /*

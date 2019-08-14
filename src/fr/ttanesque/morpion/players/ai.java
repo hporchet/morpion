@@ -1,6 +1,6 @@
 package fr.ttanesque.morpion.players;
 
-import fr.ttanesque.morpion.core.jeu;
+import fr.ttanesque.morpion.core.game;
 
 import static fr.ttanesque.morpion.Main.MATRICE_SIZE;
 
@@ -13,7 +13,7 @@ public class ai {
     * @param gameMatrice : a square matrix
     * */
     public static void aiTurn(char[][] gameMatrice) {
-        if (jeu.canBePlaced(gameMatrice, 1, 1)) gameMatrice[1][1] = 'O';
+        if (game.canBePlaced(gameMatrice, 1, 1)) gameMatrice[1][1] = 'O';
         else {
             for (int i=0; i<MATRICE_SIZE; i++) {
                 for (int j=0; j<MATRICE_SIZE; j++) {

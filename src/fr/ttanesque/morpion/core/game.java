@@ -2,7 +2,7 @@ package fr.ttanesque.morpion.core;
 
 import static fr.ttanesque.morpion.Main.MATRICE_SIZE;
 
-public class jeu {
+public class game {
 
     /*
     * This function verify if the case of the matrice is empty in this case the two possible valor is X and O
