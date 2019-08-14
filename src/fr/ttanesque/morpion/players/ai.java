@@ -33,10 +33,22 @@ public class ai {
     * CanWin : 0 false, 1 true
     * */
     private int[][] checkDiag(char[][] gameMatrice) {
-        int[][] situation = new int[MATRICE_SIZE][3];
+        int[][] situation = new int[2][3];
 
         int playerCase = 0;
         int aiCase = 0;
+
+        for (int i = 0; i < MATRICE_SIZE; i++) {
+            if (gameMatrice[i][i] == 'X') playerCase++;
+            else if (gameMatrice[i][i] == 'O') aiCase++;
+        }
+        formatFill(situation, playerCase, aiCase, 0);
+
+        for (int i = MATRICE_SIZE-1; i >= 0; i--) {
+            if (gameMatrice[i][i] == 'X') playerCase++;
+            else if (gameMatrice[i][i] == 'O') aiCase++;
+        }
+        formatFill(situation, playerCase, aiCase, 1);
 
         return situation;
     }
