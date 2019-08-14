@@ -68,32 +68,36 @@ public class jeu {
     }
 
     private static int diag(char[][] gameMatrice) {
-        char lastChar1 = ' ';
-        char lastChar2 = ' ';
+        char lastChar = ' ';
         int checkDiag = 0;
 
         for (int i = 0; i < gameMatrice.length; i++) {
-            if (lastChar1 != 'X' && lastChar1 != 'O') {
-                lastChar1 = gameMatrice[i][i];
+            if (lastChar != 'X' && lastChar != 'O') {
+                lastChar = gameMatrice[i][i];
                 checkDiag = 1;
-            } else if (lastChar1 == gameMatrice[i][i]) checkDiag++;
-
-            if (checkDiag == gameMatrice.length) {
-                if (lastChar1 == 'X') return 1; //player
-                else if (lastChar1 == 'O') return 2; //ai
-            }
+            } else if (lastChar == gameMatrice[i][i]) checkDiag++;
         }
+        // if we have a winner we directly stop
+        if (checkDiag == gameMatrice.length) {
+            if (lastChar == 'X') return 1; //player
+            else if (lastChar == 'O') return 2; //ai
+        }
+        
+        //reinitialisation 
         checkDiag = 0;
+        lastChar = ' ';
+
+
         for (int i=gameMatrice.length -1; i >= 0; i--) {
-            if (lastChar2 != 'X' && lastChar2 != 'O') {
-                lastChar2 = gameMatrice[i][2 - i];
+            if (lastChar != 'X' && lastChar != 'O') {
+                lastChar = gameMatrice[i][2 - i];
                 checkDiag = 1;
-            } else if (lastChar2 == gameMatrice[i][2 - i]) checkDiag++;
+            } else if (lastChar == gameMatrice[i][2 - i]) checkDiag++;
         }
 
         if (checkDiag == gameMatrice.length) {
-            if (lastChar2 == 'X') return 1; //player
-            else if (lastChar2 == 'O') return 2; //ai
+            if (lastChar == 'X') return 1; //player
+            else if (lastChar == 'O') return 2; //ai
         }
 
         return 0; //winner not found
