@@ -1,2 +1,2 @@
 # Morpion
-Un morpion console
+A console morpion
