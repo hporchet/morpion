@@ -1,5 +1,7 @@
 package fr.ttanesque.morpion.core;
 
+import static fr.ttanesque.morpion.Main.MATRICE_SIZE;
+
 public class jeu {
 
     /*
@@ -32,14 +34,14 @@ public class jeu {
         char lastChar = ' ';
         int checkColumn = 0; // for check it's the same symbol in the entire column
 
-        for (int x = 0; x < gameMatrice.length; x++) {
+        for (int x = 0; x < MATRICE_SIZE; x++) {
             for (char[] a : gameMatrice) {
                 if (lastChar == ' ') {
                     lastChar = a[x];
                     checkColumn = 1;
                 } else if (a[x] == lastChar) checkColumn++;
 
-                if (checkColumn == gameMatrice.length) {
+                if (checkColumn == MATRICE_SIZE) {
                     if (lastChar == 'X') return 1; //player
                     else if (lastChar == 'O') return 2; //ai
                 } else return 0;
@@ -60,7 +62,7 @@ public class jeu {
                 } else if (x == lastChar) checkLine++;
             }
         }
-        if (checkLine == gameMatrice.length) {
+        if (checkLine == MATRICE_SIZE) {
             if (lastChar == 'X') return 1; // player
             else if (lastChar == 'O') return 2; // ai
         }
@@ -71,14 +73,14 @@ public class jeu {
         char lastChar = ' ';
         int checkDiag = 0;
 
-        for (int i = 0; i < gameMatrice.length; i++) {
+        for (int i = 0; i < MATRICE_SIZE; i++) {
             if (lastChar != 'X' && lastChar != 'O') {
                 lastChar = gameMatrice[i][i];
                 checkDiag = 1;
             } else if (lastChar == gameMatrice[i][i]) checkDiag++;
         }
         // if we have a winner we directly stop
-        if (checkDiag == gameMatrice.length) {
+        if (checkDiag == MATRICE_SIZE) {
             if (lastChar == 'X') return 1; //player
             else if (lastChar == 'O') return 2; //ai
         }
@@ -88,14 +90,14 @@ public class jeu {
         lastChar = ' ';
 
 
-        for (int i=gameMatrice.length -1; i >= 0; i--) {
+        for (int i=MATRICE_SIZE -1; i >= 0; i--) {
             if (lastChar != 'X' && lastChar != 'O') {
                 lastChar = gameMatrice[i][2 - i];
                 checkDiag = 1;
             } else if (lastChar == gameMatrice[i][2 - i]) checkDiag++;
         }
 
-        if (checkDiag == gameMatrice.length) {
+        if (checkDiag == MATRICE_SIZE) {
             if (lastChar == 'X') return 1; //player
             else if (lastChar == 'O') return 2; //ai
         }
