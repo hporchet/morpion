@@ -64,8 +64,8 @@ public class ai {
     private int[][] checkLine(char[][] gameMatrice) {
         int[][] situation = new int[MATRICE_SIZE][3];
 
-        int playerCase = 0;
-        int aiCase = 0;
+        int playerCase ;
+        int aiCase;
 
         for (int i=0; i<MATRICE_SIZE; i++) {
             playerCase = 0;
