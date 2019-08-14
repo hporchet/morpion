@@ -38,7 +38,7 @@ public class Main {
     }
 
     /*
-     * @param gamMatrice : a squared matrice char who represent the case of game
+     * @param gameMatrix : a squared matrix char who represent the cases of game
      * example :
      * -----
      * |X  |
