@@ -15,7 +15,7 @@ public class jeu {
 
     /*
     * This function check if the game as an winner
-    * 0 none, 1 fr.ttanesque.morpion.players.player win, 2 fr.ttanesque.morpion.players.ai win, 3 equality
+    * 0 none, 1 player win, 2 ai win, 3 equality
     *
     * @param gameMatrice : a square matrix
     * */
