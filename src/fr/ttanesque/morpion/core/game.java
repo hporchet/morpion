@@ -5,7 +5,7 @@ import static fr.ttanesque.morpion.Main.MATRICE_SIZE;
 public class game {
 
     /*
-    * This function verify if the case of the matrice is empty in this case the two possible valor is X and O
+    * This function checks if the case of the matrix is empty. possible : valor is X and O
     *
     * @param gameMatrice : a square matrix
     * @param x : location in the abscisse of the matrice
@@ -16,7 +16,7 @@ public class game {
     }
 
     /*
-    * This function check if the game as an winner
+    * This function checks if the game as a winner
     * 0 none, 1 player win, 2 ai win, 3 equality
     *
     * @param gameMatrice : a square matrix
@@ -32,7 +32,7 @@ public class game {
 
     private static int column(char[][] gameMatrice) {
         char lastChar = ' ';
-        int checkColumn = 0; // for check it's the same symbol in the entire column
+        int checkColumn = 0; // for checks it's the same symbol on the entire column
 
         for (int x = 0; x < MATRICE_SIZE; x++) {
             for (char[] a : gameMatrice) {
@@ -52,7 +52,7 @@ public class game {
 
     private static int line(char[][] gameMatrice) {
         char lastChar = ' ';
-        int checkLine = 0; // for check it's the same symbol in the entire line
+        int checkLine = 0; // for check it's the same symbol on the entire line
 
         for (char[] a : gameMatrice) {
             for (char x : a) {
