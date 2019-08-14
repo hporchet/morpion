@@ -11,9 +11,9 @@ public class Main {
     public static void main(String[] args) {
         //create the game support
         char[][] gameMatrice = new char[3][3];
-        for (char[] a : gameMatrice) {
-            for (char x : a) {
-                x = ' ';
+        for (int i=0; i < gameMatrice.length; i++) {
+            for (int j=0; j <gameMatrice.length; j++) {
+                gameMatrice[i][j] = ' ';
             }
         }
 
