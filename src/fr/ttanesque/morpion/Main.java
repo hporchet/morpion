@@ -8,7 +8,7 @@ import fr.ttanesque.morpion.players.player;
 
 public class Main {
 
-    public static int MATRICE_SIZE = 3;
+    public static final int MATRICE_SIZE = 3;
     
     public static void main(String[] args) {
         //create the game support
