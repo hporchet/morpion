@@ -59,12 +59,16 @@ public class Main {
         switch (i) {
             case 1:
                 System.out.println("Congratulation your win");
+                break;
             case 2:
                 System.out.println("Game over");
+                break;
             case 3:
                 System.out.println("Equality");
+                break;
             default:
                 System.out.println("error in the matrix");
+                break;
         }
     }
 }
