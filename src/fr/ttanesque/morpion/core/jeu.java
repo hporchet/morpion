@@ -58,12 +58,11 @@ public class jeu {
                     lastChar = x;
                     checkLine = 1;
                 } else if (x == lastChar) checkLine++;
-
-                if (checkLine == gameMatrice.length) {
-                    if (lastChar == 'X') return 1; // player
-                    else if (lastChar == 'O') return 2; // ai
-                } else return 0;
             }
+        }
+        if (checkLine == gameMatrice.length) {
+            if (lastChar == 'X') return 1; // player
+            else if (lastChar == 'O') return 2; // ai
         }
         return 0;
     }
