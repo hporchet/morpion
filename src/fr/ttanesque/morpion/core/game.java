@@ -1,6 +1,6 @@
 package fr.ttanesque.morpion.core;
 
-import static fr.ttanesque.morpion.Main.MATRICE_SIZE;
+import static fr.ttanesque.morpion.Main.MATRIX_SIZE;
 
 public class game {
 
@@ -34,14 +34,14 @@ public class game {
         char lastChar = ' ';
         int checkColumn = 0; // for checks it's the same symbol on the entire column
 
-        for (int x = 0; x < MATRICE_SIZE; x++) {
+        for (int x = 0; x < MATRIX_SIZE; x++) {
             for (char[] a : gameMatrix) {
                 if (lastChar == ' ') {
                     lastChar = a[x];
                     checkColumn = 1;
                 } else if (a[x] == lastChar) checkColumn++;
 
-                if (checkColumn == MATRICE_SIZE) {
+                if (checkColumn == MATRIX_SIZE) {
                     if (lastChar == 'X') return 1; //player
                     else if (lastChar == 'O') return 2; //ai
                 } else return 0;
@@ -62,7 +62,7 @@ public class game {
                 } else if (x == lastChar) checkLine++;
             }
         }
-        if (checkLine == MATRICE_SIZE) {
+        if (checkLine == MATRIX_SIZE) {
             if (lastChar == 'X') return 1; // player
             else if (lastChar == 'O') return 2; // ai
         }
@@ -73,14 +73,14 @@ public class game {
         char lastChar = ' ';
         int checkDiag = 0;
 
-        for (int i = 0; i < MATRICE_SIZE; i++) {
+        for (int i = 0; i < MATRIX_SIZE; i++) {
             if (lastChar != 'X' && lastChar != 'O') {
                 lastChar = gameMatrix[i][i];
                 checkDiag = 1;
             } else if (lastChar == gameMatrix[i][i]) checkDiag++;
         }
         // if we have a winner we directly stop
-        if (checkDiag == MATRICE_SIZE) {
+        if (checkDiag == MATRIX_SIZE) {
             if (lastChar == 'X') return 1; //player
             else if (lastChar == 'O') return 2; //ai
         }
@@ -90,14 +90,14 @@ public class game {
         lastChar = ' ';
 
 
-        for (int i=MATRICE_SIZE -1; i >= 0; i--) {
+        for (int i = MATRIX_SIZE -1; i >= 0; i--) {
             if (lastChar != 'X' && lastChar != 'O') {
                 lastChar = gameMatrix[i][2 - i];
                 checkDiag = 1;
             } else if (lastChar == gameMatrix[i][2 - i]) checkDiag++;
         }
 
-        if (checkDiag == MATRICE_SIZE) {
+        if (checkDiag == MATRIX_SIZE) {
             if (lastChar == 'X') return 1; //player
             else if (lastChar == 'O') return 2; //ai
         }

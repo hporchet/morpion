@@ -8,15 +8,15 @@ import fr.ttanesque.morpion.players.player;
 
 public class Main {
 
-    public static final int MATRICE_SIZE = 3;
+    public static final int MATRIX_SIZE = 3;
     
     public static void main(String[] args) {
         //create the game support
-        char[][] gameMatrix = new char[MATRICE_SIZE][MATRICE_SIZE];
+        char[][] gameMatrix = new char[MATRIX_SIZE][MATRIX_SIZE];
 
         //fill it with ' '
-        for (int i=0; i < MATRICE_SIZE; i++) {
-            for (int j=0; j <MATRICE_SIZE; j++) {
+        for (int i = 0; i < MATRIX_SIZE; i++) {
+            for (int j = 0; j < MATRIX_SIZE; j++) {
                 gameMatrix[i][j] = ' ';
             }
         }

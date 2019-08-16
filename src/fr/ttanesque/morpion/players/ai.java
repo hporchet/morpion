@@ -2,7 +2,7 @@ package fr.ttanesque.morpion.players;
 
 import fr.ttanesque.morpion.core.game;
 
-import static fr.ttanesque.morpion.Main.MATRICE_SIZE;
+import static fr.ttanesque.morpion.Main.MATRIX_SIZE;
 
 
 public class ai {
@@ -41,13 +41,13 @@ public class ai {
         int playerCase = 0;
         int aiCase = 0;
 
-        for (int i = 0; i < MATRICE_SIZE; i++) {
+        for (int i = 0; i < MATRIX_SIZE; i++) {
             if (gameMatrix[i][i] == 'X') playerCase++;
             else if (gameMatrix[i][i] == 'O') aiCase++;
         }
         formatFill(situation, playerCase, aiCase, 0);
 
-        for (int i = MATRICE_SIZE-1; i >= 0; i--) {
+        for (int i = MATRIX_SIZE -1; i >= 0; i--) {
             if (gameMatrix[i][i] == 'X') playerCase++;
             else if (gameMatrix[i][i] == 'O') aiCase++;
         }
@@ -65,15 +65,15 @@ public class ai {
      *          CanWin : 0 false, 1 true
      * */
     private static int[][] checkLine(char[][] gameMatrix) {
-        int[][] situation = new int[MATRICE_SIZE][3];
+        int[][] situation = new int[MATRIX_SIZE][3];
 
         int playerCase ;
         int aiCase;
 
-        for (int i=0; i<MATRICE_SIZE; i++) {
+        for (int i = 0; i< MATRIX_SIZE; i++) {
             playerCase = 0;
             aiCase = 0;
-            for (int j=0; j<MATRICE_SIZE; j++) {
+            for (int j = 0; j< MATRIX_SIZE; j++) {
                 if (gameMatrix[i][j] == 'X') playerCase++;
                 else if (gameMatrix[i][j] == 'O') aiCase++;
             }
@@ -93,15 +93,15 @@ public class ai {
      *          CanWin : 0 false, 1 true
      * */
     private static int[][] checkColumn(char[][] gameMatrix) {
-        int[][] situation = new int[MATRICE_SIZE][3];
+        int[][] situation = new int[MATRIX_SIZE][3];
 
         int playerCase;
         int aiCase;
 
-        for (int i=0; i<MATRICE_SIZE; i++) {
+        for (int i = 0; i< MATRIX_SIZE; i++) {
             playerCase = 0;
             aiCase = 0;
-            for (int j = 0; j < MATRICE_SIZE; j++) {
+            for (int j = 0; j < MATRIX_SIZE; j++) {
                 if (gameMatrix[j][i] == 'X') playerCase++;
                 else if (gameMatrix[j][i] == 'O') aiCase++;
             }
