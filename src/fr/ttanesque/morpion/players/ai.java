@@ -22,28 +22,28 @@ public class ai {
             result[1] = checkColumn(gameMatrix);
             result[2] = checkDiag(gameMatrix);
 
-            int[][] winTrue = new int[8][]; // [] = line column diag [] = the number ex 2 in line
-            int iWinTrue = 0; // for fill correctly winTrue
+            //int[][] winTrue = new int[8][]; // [] = line column diag [] = the number ex 2 in line
+            //int iWinTrue = 0; // for fill correctly winTrue
             for (int j = 0; j < result.length; j++) {
                 for (int i = 0; i < result[j].length; i++) {
 
                     // ai can win in one move
                     if (result[j][i][0] == 1 && result[j][i][1] == 2 && result[j][i][2] == MATRIX_SIZE - 1) {
+                        System.out.println("ai win one move");
                         urgentMove(gameMatrix, j, i);
                         return;
                     }
                     // player can win in one move
                     else if (result[j][i][0] == 1 && result[j][i][1] == 1 && result[j][i][2] == MATRIX_SIZE - 1) {
+                        System.out.println("player win one move");
                         urgentMove(gameMatrix, j, i);
                         return;
-                    }
-
-
-                    if (result[j][i][0] == 1 && result[j][i][1] == 2) {
-                        winTrue[iWinTrue] = new int[]{j, i};
+                    } else if (result[j][i][0] == 1 && result[j][i][1] == 2) {
+                        //winTrue[iWinTrue] = new int[]{j, i};
+                        System.out.println("low good prio");
                     } else if (result[j][i][0] == 1 && result[j][i][2] == 1) {
                         // low priority treatment
-                        System.out.println(" low prio");
+                        System.out.println("low prio");
                     }
                 }
             }
@@ -62,26 +62,26 @@ public class ai {
                 }
             }
         } else if (j == 1) {
-            for (int y = 0; y < MATRIX_SIZE; y++) {
-                if (game.canBePlaced(gameMatrix, i, y)) {
-                    gameMatrix[i][y] = 'O';
+            for (int y1 = 0; y1 < MATRIX_SIZE; y1++) {
+                if (game.canBePlaced(gameMatrix, y1, i)) {
+                    gameMatrix[y1][i] = 'O';
                 }
             }
         } else if (j == 2) {
-            int y = 0;
-            while (y < MATRIX_SIZE) {
-                if (game.canBePlaced(gameMatrix, y, y)) {
-                    gameMatrix[y][y] = 'O';
+            int y1 = 0;
+            while (y1 < MATRIX_SIZE && i == 0 || y1 > 0 && i == 1) {
+                if (game.canBePlaced(gameMatrix, y1, y1)) {
+                    gameMatrix[y1][y1] = 'O';
                 }
 
                 if (i == 0) {
-                    y++;
+                    y1++;
                 } else {
-                    y--;
+                    y1--;
                 }
             }
         } else {
-            System.out.println("error in the matrix ai block line 30");
+            System.out.println("error in the matrix ai : urgentMove");
         }
     }
 
@@ -105,6 +105,8 @@ public class ai {
         }
         formatFill(situation, playerCase, aiCase, 0);
 
+        playerCase = 0;
+        aiCase = 0;
         for (int i = MATRIX_SIZE -1; i >= 0; i--) {
             if (gameMatrix[i][i] == 'X') playerCase++;
             else if (gameMatrix[i][i] == 'O') aiCase++;
@@ -190,7 +192,7 @@ public class ai {
             situation[i][1] = 1; //player
         } else if (aiCase > playerCase) {
             situation[i][1] = 2; //ai
-        } else if (aiCase == playerCase) {
+        } else if (aiCase == playerCase && aiCase > 0) {
             situation[i][1] = 3; //equality
         } else {
             situation[i][1] = 0; //none
