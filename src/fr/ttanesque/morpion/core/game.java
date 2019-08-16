@@ -12,7 +12,7 @@ public class game {
     * @param y : location in the ordinate of the matrice
      * */
     public static boolean canBePlaced(char[][] gameMatrix, int x, int y) {
-        return gameMatrix[y][x] != 'X' || gameMatrix[y][x] != 'O';
+        return gameMatrix[y][x] != 'X' && gameMatrix[y][x] != 'O';
     }
 
     /*
