@@ -10,43 +10,46 @@ public class ai {
     /*
     * ai side
     *
-    * @param gameMatrice : a square matrix
+    * @param gameMatrix : a square matrix
     * */
-    public static void aiTurn(char[][] gameMatrice) {
-        if (game.canBePlaced(gameMatrice, 1, 1)) gameMatrice[1][1] = 'O';
+    public static void aiTurn(char[][] gameMatrix) {
+        if (game.canBePlaced(gameMatrix, 1, 1)) gameMatrix[1][1] = 'O';
         else {
-            for (int i=0; i<MATRICE_SIZE; i++) {
-                for (int j=0; j<MATRICE_SIZE; j++) {
-                    System.out.println("ok");
-                }
+            int[][][] result = new int[3][][];
+
+            //fill
+            result[0] = checkLine(gameMatrix);
+            result[1] = checkColumn(gameMatrix);
+            result[2] = checkDiag(gameMatrix);
+
+            int[][] winTrue = new int[8][];
             }
         }
-    }
 
 
     /*
     * This function checks who could win the diagonal and the number of filled cases
     *
-    * @param gameMatrice : a square matrix
+    * @param gameMatrix : a square matrix
     * @return {{CanWin, who, number of case fill}, ...}
     * who : 0 none, 1 player, 2ai
     * CanWin : 0 false, 1 true
     * */
-    private int[][] checkDiag(char[][] gameMatrice) {
+    private static int[][] checkDiag(char[][] gameMatrix) {
         int[][] situation = new int[2][3];
 
         int playerCase = 0;
         int aiCase = 0;
 
         for (int i = 0; i < MATRICE_SIZE; i++) {
-            if (gameMatrice[i][i] == 'X') playerCase++;
-            else if (gameMatrice[i][i] == 'O') aiCase++;
+            if (gameMatrix[i][i] == 'X') playerCase++;
+            else if (gameMatrix[i][i] == 'O') aiCase++;
         }
         formatFill(situation, playerCase, aiCase, 0);
 
         for (int i = MATRICE_SIZE-1; i >= 0; i--) {
-            if (gameMatrice[i][i] == 'X') playerCase++;
-            else if (gameMatrice[i][i] == 'O') aiCase++;
+            if (gameMatrix[i][i] == 'X') playerCase++;
+            else if (gameMatrix[i][i] == 'O') aiCase++;
         }
         formatFill(situation, playerCase, aiCase, 1);
 
@@ -56,12 +59,12 @@ public class ai {
     /*
      * This function checks who could win the line and the number of filled cases
      *
-     * @param gameMatrice : a square matrix
+     * @param gameMatrix : a square matrix
      * @return {{CanWin, who, number of case fill}, ...}
      *          who : 0 none, 1 player, 2ai
      *          CanWin : 0 false, 1 true
      * */
-    private int[][] checkLine(char[][] gameMatrice) {
+    private static int[][] checkLine(char[][] gameMatrix) {
         int[][] situation = new int[MATRICE_SIZE][3];
 
         int playerCase ;
@@ -71,8 +74,8 @@ public class ai {
             playerCase = 0;
             aiCase = 0;
             for (int j=0; j<MATRICE_SIZE; j++) {
-                if (gameMatrice[i][j] == 'X') playerCase++;
-                else if (gameMatrice[i][j] == 'O') aiCase++;
+                if (gameMatrix[i][j] == 'X') playerCase++;
+                else if (gameMatrix[i][j] == 'O') aiCase++;
             }
             formatFill(situation, playerCase, aiCase, i);
         }
@@ -84,12 +87,12 @@ public class ai {
     /*
      * This function checks who could win the column and the numbre of filled case
      *
-     * @param gameMatrice : a square matrix
+     * @param gameMatrix : a square matrix
      * @return {{CanWin, who, number of case fill}, ...}
      *          who : 0 none, 1 player, 2ai
      *          CanWin : 0 false, 1 true
      * */
-    private int[][] checkColumn(char[][] gameMatrice) {
+    private static int[][] checkColumn(char[][] gameMatrix) {
         int[][] situation = new int[MATRICE_SIZE][3];
 
         int playerCase;
@@ -99,8 +102,8 @@ public class ai {
             playerCase = 0;
             aiCase = 0;
             for (int j = 0; j < MATRICE_SIZE; j++) {
-                if (gameMatrice[j][i] == 'X') playerCase++;
-                else if (gameMatrice[j][i] == 'O') aiCase++;
+                if (gameMatrix[j][i] == 'X') playerCase++;
+                else if (gameMatrix[j][i] == 'O') aiCase++;
             }
             formatFill(situation, playerCase, aiCase, i);
         }
@@ -118,7 +121,7 @@ public class ai {
     * @param aiCase : number of filled cases by ai
     * @param i : the indices who data would be stocked
     * */
-    private void formatFill(int[][] situation, int playerCase, int aiCase, int i) {
+    private static void formatFill(int[][] situation, int playerCase, int aiCase, int i) {
         //fill the line
         //canWin
         if (playerCase > 0 && aiCase > 0) situation[i][0] = 0;

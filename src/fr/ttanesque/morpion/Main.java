@@ -12,29 +12,29 @@ public class Main {
     
     public static void main(String[] args) {
         //create the game support
-        char[][] gameMatrice = new char[MATRICE_SIZE][MATRICE_SIZE];
+        char[][] gameMatrix = new char[MATRICE_SIZE][MATRICE_SIZE];
 
         //fill it with ' '
         for (int i=0; i < MATRICE_SIZE; i++) {
             for (int j=0; j <MATRICE_SIZE; j++) {
-                gameMatrice[i][j] = ' ';
+                gameMatrix[i][j] = ' ';
             }
         }
 
         do {
-            show(gameMatrice);
-            player.playerTurn(gameMatrice);
-            show(gameMatrice);
+            show(gameMatrix);
+            player.playerTurn(gameMatrix);
+            show(gameMatrix);
 
-            int result = game.checkEnd(gameMatrice);
+            int result = game.checkEnd(gameMatrix);
             if (result != 0) { //game is end
                 end(result);
             } else {
-                ai.aiTurn(gameMatrice);
+                ai.aiTurn(gameMatrix);
             }
 
 
-        } while (game.checkEnd(gameMatrice) == 0);
+        } while (game.checkEnd(gameMatrix) == 0);
     }
 
     /*
