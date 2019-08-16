@@ -35,6 +35,8 @@ public class game {
         int checkColumn = 0; // for checks it's the same symbol on the entire column
 
         for (int x = 0; x < MATRIX_SIZE; x++) {
+            lastChar = ' ';
+            checkColumn = 0;
             for (char[] a : gameMatrix) {
                 if (lastChar == ' ') {
                     lastChar = a[x];
@@ -44,7 +46,7 @@ public class game {
                 if (checkColumn == MATRIX_SIZE) {
                     if (lastChar == 'X') return 1; //player
                     else if (lastChar == 'O') return 2; //ai
-                } else return 0;
+                }
             }
         }
         return 0; //
@@ -55,16 +57,18 @@ public class game {
         int checkLine = 0; // for check it's the same symbol on the entire line
 
         for (char[] a : gameMatrix) {
+            checkLine = 0;
+            lastChar = ' ';
             for (char x : a) {
                 if (lastChar == ' ') {
                     lastChar = x;
                     checkLine = 1;
                 } else if (x == lastChar) checkLine++;
             }
-        }
-        if (checkLine == MATRIX_SIZE) {
-            if (lastChar == 'X') return 1; // player
-            else if (lastChar == 'O') return 2; // ai
+            if (checkLine == MATRIX_SIZE) {
+                if (lastChar == 'X') return 1; // player
+                else if (lastChar == 'O') return 2; // ai
+            }
         }
         return 0;
     }
