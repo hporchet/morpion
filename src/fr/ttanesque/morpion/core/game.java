@@ -31,8 +31,8 @@ public class game {
     }
 
     private static int column(char[][] gameMatrix) {
-        char lastChar = ' ';
-        int checkColumn = 0; // for checks it's the same symbol on the entire column
+        char lastChar;
+        int checkColumn; // for checks it's the same symbol on the entire column
 
         for (int x = 0; x < MATRIX_SIZE; x++) {
             lastChar = ' ';
@@ -53,8 +53,8 @@ public class game {
     }
 
     private static int line(char[][] gameMatrix) {
-        char lastChar = ' ';
-        int checkLine = 0; // for check it's the same symbol on the entire line
+        char lastChar;
+        int checkLine; // for check it's the same symbol on the entire line
 
         for (char[] a : gameMatrix) {
             checkLine = 0;
