@@ -23,16 +23,53 @@ public class ai {
             result[2] = checkDiag(gameMatrix);
 
             int[][] winTrue = new int[8][];
+            for (int j = 0; j < result.length; j++) {
+                for (int i = 0; i < result[j].length; i++) {
+
+                    // ai can win in one move
+                    if (result[j][i][0] == 1 && result[j][i][2] == 2 && result[j][i][3] == MATRIX_SIZE - 1) {
+                        if (j == 0) {
+                                for (int y = 0; y < MATRIX_SIZE; y++) {
+                                    if (game.canBePlaced(gameMatrix, i, y)) {
+                                        gameMatrix[i][y] = 'O';
+                                        return;
+                                    }
+                                }
+                        } else if (j == 1) {
+                                for (int y = 0; y < MATRIX_SIZE; y++) {
+                                    if (game.canBePlaced(gameMatrix, i, y)) {
+                                        gameMatrix[i][y] = 'O';
+                                    }
+                                }
+                        } else if (j == 2) {
+                            int y = 0;
+                            while (y < MATRIX_SIZE) {
+                                if (game.canBePlaced(gameMatrix, y, y)) {
+                                    gameMatrix[y][y] = 'O';
+                                }
+
+                                if (i == 0) {
+                                    y++;
+                                } else {
+                                    y--;
+                                }
+                            }
+                        } else {
+                            System.out.println("error in the matrix ai block line 30");
+                        }
+                        return;
+                    }
+                }
             }
         }
-
+    }
 
     /*
     * This function checks who could win the diagonal and the number of filled cases
     *
     * @param gameMatrix : a square matrix
     * @return {{CanWin, who, number of case fill}, ...}
-    * who : 0 none, 1 player, 2ai
+    * who : 0 none, 1 player, 2 ai
     * CanWin : 0 false, 1 true
     * */
     private static int[][] checkDiag(char[][] gameMatrix) {
@@ -61,7 +98,7 @@ public class ai {
      *
      * @param gameMatrix : a square matrix
      * @return {{CanWin, who, number of case fill}, ...}
-     *          who : 0 none, 1 player, 2ai
+     *          who : 0 none, 1 player, 2 ai
      *          CanWin : 0 false, 1 true
      * */
     private static int[][] checkLine(char[][] gameMatrix) {
@@ -89,7 +126,7 @@ public class ai {
      *
      * @param gameMatrix : a square matrix
      * @return {{CanWin, who, number of case fill}, ...}
-     *          who : 0 none, 1 player, 2ai
+     *          who : 0 none, 1 player, 2 ai
      *          CanWin : 0 false, 1 true
      * */
     private static int[][] checkColumn(char[][] gameMatrix) {
