@@ -22,45 +22,66 @@ public class ai {
             result[1] = checkColumn(gameMatrix);
             result[2] = checkDiag(gameMatrix);
 
-            int[][] winTrue = new int[8][];
+            int[][] winTrue = new int[8][]; // [] = line column diag [] = the number ex 2 in line
+            int iWinTrue = 0; // for fill correctly winTrue
             for (int j = 0; j < result.length; j++) {
                 for (int i = 0; i < result[j].length; i++) {
 
                     // ai can win in one move
-                    if (result[j][i][0] == 1 && result[j][i][2] == 2 && result[j][i][3] == MATRIX_SIZE - 1) {
-                        if (j == 0) {
-                                for (int y = 0; y < MATRIX_SIZE; y++) {
-                                    if (game.canBePlaced(gameMatrix, i, y)) {
-                                        gameMatrix[i][y] = 'O';
-                                        return;
-                                    }
-                                }
-                        } else if (j == 1) {
-                                for (int y = 0; y < MATRIX_SIZE; y++) {
-                                    if (game.canBePlaced(gameMatrix, i, y)) {
-                                        gameMatrix[i][y] = 'O';
-                                    }
-                                }
-                        } else if (j == 2) {
-                            int y = 0;
-                            while (y < MATRIX_SIZE) {
-                                if (game.canBePlaced(gameMatrix, y, y)) {
-                                    gameMatrix[y][y] = 'O';
-                                }
-
-                                if (i == 0) {
-                                    y++;
-                                } else {
-                                    y--;
-                                }
-                            }
-                        } else {
-                            System.out.println("error in the matrix ai block line 30");
-                        }
+                    if (result[j][i][0] == 1 && result[j][i][1] == 2 && result[j][i][2] == MATRIX_SIZE - 1) {
+                        urgentMove(gameMatrix, j, i);
                         return;
+                    }
+                    // player can win in one move
+                    else if (result[j][i][0] == 1 && result[j][i][1] == 1 && result[j][i][2] == MATRIX_SIZE - 1) {
+                        urgentMove(gameMatrix, j, i);
+                        return;
+                    }
+
+
+                    if (result[j][i][0] == 1 && result[j][i][1] == 2) {
+                        winTrue[iWinTrue] = new int[]{j, i};
+                    } else if (result[j][i][0] == 1 && result[j][i][2] == 1) {
+                        // low priority treatment
+                        System.out.println(" low prio");
                     }
                 }
             }
+        }
+    }
+
+    /*
+    *
+    * */
+    private static void urgentMove(char[][] gameMatrix, int j, int i) {
+        if (j == 0) {
+            for (int y = 0; y < MATRIX_SIZE; y++) {
+                if (game.canBePlaced(gameMatrix, i, y)) {
+                    gameMatrix[i][y] = 'O';
+                    return;
+                }
+            }
+        } else if (j == 1) {
+            for (int y = 0; y < MATRIX_SIZE; y++) {
+                if (game.canBePlaced(gameMatrix, i, y)) {
+                    gameMatrix[i][y] = 'O';
+                }
+            }
+        } else if (j == 2) {
+            int y = 0;
+            while (y < MATRIX_SIZE) {
+                if (game.canBePlaced(gameMatrix, y, y)) {
+                    gameMatrix[y][y] = 'O';
+                }
+
+                if (i == 0) {
+                    y++;
+                } else {
+                    y--;
+                }
+            }
+        } else {
+            System.out.println("error in the matrix ai block line 30");
         }
     }
 
