@@ -62,24 +62,24 @@ public class ai {
                 }
             }
         } else if (j == 1) {
-            for (int y1 = 0; y1 < MATRIX_SIZE; y1++) {
-                if (game.canBePlaced(gameMatrix, y1, i)) {
-                    gameMatrix[y1][i] = 'O';
+            for (int x1 = 0; x1 < MATRIX_SIZE; x1++) {
+                if (game.canBePlaced(gameMatrix, x1, i)) {
+                    gameMatrix[x1][i] = 'O';
                 }
             }
         } else if (j == 2) {
-            int y1 = 0;
+            int x1 = 0;
             do {
-                if (game.canBePlaced(gameMatrix, y1, y1)) {
-                    gameMatrix[y1][y1] = 'O';
+                if (game.canBePlaced(gameMatrix, x1, x1)) {
+                    gameMatrix[x1][x1] = 'O';
                 }
 
                 if (i == 0) {
-                    y1++;
+                    x1++;
                 } else {
-                    y1--;
+                    x1--;
                 }
-            } while (y1 < MATRIX_SIZE && i == 0 || y1 > 0 && i == 1);
+            } while (x1 < MATRIX_SIZE && i == 0 || x1 > 0 && i == 1);
         } else {
             System.out.println("error in the matrix ai : urgentMove");
         }
