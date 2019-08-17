@@ -55,16 +55,16 @@ public class ai {
     * */
     private static void urgentMove(char[][] gameMatrix, int j, int i) {
         if (j == 0) {
-            for (int y = 0; y < MATRIX_SIZE; y++) {
-                if (game.canBePlaced(gameMatrix, i, y)) {
-                    gameMatrix[i][y] = 'O';
+            for (int x = 0; x < MATRIX_SIZE; x++) {
+                if (game.canBePlaced(gameMatrix, x, i)) {
+                    gameMatrix[i][x] = 'O';
                     return;
                 }
             }
         } else if (j == 1) {
-            for (int x1 = 0; x1 < MATRIX_SIZE; x1++) {
-                if (game.canBePlaced(gameMatrix, x1, i)) {
-                    gameMatrix[x1][i] = 'O';
+            for (int y = 0; y < MATRIX_SIZE; y++) {
+                if (game.canBePlaced(gameMatrix, i, y)) {
+                    gameMatrix[y][i] = 'O';
                 }
             }
         } else if (j == 2) {
