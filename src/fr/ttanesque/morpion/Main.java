@@ -21,20 +21,18 @@ public class Main {
             }
         }
 
+        show(gameMatrix);
         do {
-            show(gameMatrix);
             player.playerTurn(gameMatrix);
             show(gameMatrix);
 
             int result = game.checkEnd(gameMatrix);
-            if (result != 0) { //game is end
-                end(result);
-            } else {
+            if (result == 0) {
                 ai.aiTurn(gameMatrix);
+                show(gameMatrix);
             }
-
-
         } while (game.checkEnd(gameMatrix) == 0);
+        end(game.checkEnd(gameMatrix));
     }
 
     /*
