@@ -69,7 +69,7 @@ public class ai {
             }
         } else if (j == 2) {
             int y1 = 0;
-            while (y1 < MATRIX_SIZE && i == 0 || y1 > 0 && i == 1) {
+            do {
                 if (game.canBePlaced(gameMatrix, y1, y1)) {
                     gameMatrix[y1][y1] = 'O';
                 }
@@ -79,7 +79,7 @@ public class ai {
                 } else {
                     y1--;
                 }
-            }
+            } while (y1 < MATRIX_SIZE && i == 0 || y1 > 0 && i == 1);
         } else {
             System.out.println("error in the matrix ai : urgentMove");
         }
