@@ -6,11 +6,11 @@ import java.util.Scanner;
 
 public class player {
 
-    /*
+    /**
     * player side
     *
     * @param gameMatrice : a square matrix
-    * */
+    **/
     public static void playerTurn(char[][] gameMatrice) {
 
         int[] coordonate = new int[2];

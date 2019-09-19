@@ -4,23 +4,22 @@ import static fr.ttanesque.morpion.Main.MATRIX_SIZE;
 
 public class game {
 
-    /*
+    /**
     * This function checks if the case of the matrix is empty. possible : valor is X and O
     *
     * @param gameMatrix : a square matrix
     * @param x : location in the abscisse of the matrice
     * @param y : location in the ordinate of the matrice
-     * */
+     **/
     public static boolean canBePlaced(char[][] gameMatrix, int x, int y) {
         return gameMatrix[y][x] != 'X' && gameMatrix[y][x] != 'O';
     }
 
-    /*
+    /**
     * This function checks if the game as a winner
-    * 0 none, 1 player win, 2 ai win, 3 equality
-    *
     * @param gameMatrix : a square matrix
-    * */
+    * @return 0 none, 1 player win, 2 ai win, 3 equality
+    */
     public static int checkEnd(char[][] gameMatrix) {
         int[] result = {column(gameMatrix), line(gameMatrix), diag(gameMatrix)};
         for (int b : result) {
@@ -30,6 +29,11 @@ public class game {
         else return 0;
     }
 
+    /**
+     * check if an player win on the column
+     * @param gameMatrix : a square matrix
+     * @return 0 none, 1 player win, 2 ai win, 3 equality
+     */
     private static int column(char[][] gameMatrix) {
         char lastChar;
         int checkColumn; // for checks it's the same symbol on the entire column
@@ -52,6 +56,11 @@ public class game {
         return 0; //
     }
 
+    /**
+     * check if an player win on the line
+     * @param gameMatrix : a square matrix
+     * @return 0 none, 1 player win, 2 ai win, 3 equality
+     */
     private static int line(char[][] gameMatrix) {
         char lastChar;
         int checkLine; // for check it's the same symbol on the entire line
@@ -73,6 +82,11 @@ public class game {
         return 0;
     }
 
+    /**
+     * check if an player win on the diagonal
+     * @param gameMatrix : a square matrix
+     * @return 0 none, 1 player win, 2 ai win, 3 equality
+     */
     private static int diag(char[][] gameMatrix) {
         char lastChar = ' ';
         int checkDiag = 0;
@@ -109,6 +123,11 @@ public class game {
         return 0; //winner not found
     }
 
+    /**
+     * determinate if he as equality
+     * @param gameMatrix : a square matrix
+     * @return boolean
+     */
     private static boolean checkEquality(char[][] gameMatrix) {
         for (char[] a : gameMatrix) {
             for (char x : a) {
